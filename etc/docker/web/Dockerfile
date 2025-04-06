@@ -20,7 +20,7 @@ RUN echo $COMMIT && \
 # Actually check out the source code now & install branch dependencies.
 RUN git -C $LJHOME fetch && \
     git -C $LJHOME checkout $COMMIT && \
-    git -C $LJHOME pull --ff-only origin $COMMIT && \
+    git -C $LJHOME pull origin $COMMIT && \
     cat $LJHOME/doc/dependencies-system | xargs apt-get -y install && \
     cat $LJHOME/doc/dependencies-cpanm | xargs cpanm -n -L /dw/extlib/ && \
     rm -rf /var/lib/apt/lists/*
@@ -30,6 +30,18 @@ RUN $LJHOME/bin/build-static.sh
 # Copy in support scripts/configurations that are useful.
 ADD scripts/ /opt/
 ADD config/ /dw/ext/local
+
+#COPY ./files/config-private.pl etc/config-private.pl
+
+#COPY ./files/config-local.pl etc/config-local.pl
+
+#COPY ./files/config.pl etc/config.pl
+
+#RUN chmod +rwx etc/config-private.pl
+
+#RUN chmod +rwx etc/config-local.pl
+
+#RUN chmod +rwx etc/config.pl
 
 # Setup script that runs to make sure we get configs in the right place and do any
 # last minute configuration.

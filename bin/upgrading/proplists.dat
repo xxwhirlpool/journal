@@ -30,6 +30,14 @@ userproplist.betafeatures_list:
   multihomed: 0
   prettyname: Beta Features List
 
+userproplist.bluesky:
+  cldversion: 4
+  datatype: char
+  des: Bluesky handle
+  indexed: 0
+  multihomed: 0
+  prettyname: Bluesky
+
 userproplist.bonus_icons:
   cldversion: 0
   datatype: num
@@ -246,6 +254,14 @@ userproplist.dont_load_members:
   multihomed: 0
   prettyname: Don't load membership information
 
+userproplist.dreamwidth:
+  cldversion: 4
+  datatype: char
+  des: dreamwidth user account name
+  indexed: 0
+  multihomed: 0
+  prettyname: dreamwidth user account name (legacy value)
+
 userproplist.dupsig_post:
   cldversion: 4
   datatype: char
@@ -397,6 +413,14 @@ userproplist.exclude_from_own_stats:
   indexed: 0
   multihomed: 0
   prettyname: Exclude from self journal stats
+
+userproplist.fediverse:
+  cldversion: 4
+  datatype: char
+  des: Fediverse handle
+  indexed: 0
+  multihomed: 0
+  prettyname: Fediverse
 
 userproplist.ffnet:
   cldversion: 4
@@ -1325,6 +1349,14 @@ userproplist.suspendmsg:
   indexed: 0
   multihomed: 0
   prettyname: Message to be shown for suspended journal
+
+userproplist.superlove:
+  cldversion: 4
+  datatype: char
+  des: superlove user account name
+  indexed: 0
+  multihomed: 0
+  prettyname: superlove user account name (legacy value)
 
 userproplist.timeformat_24:
   cldversion: 4

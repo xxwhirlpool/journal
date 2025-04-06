@@ -1,6 +1,6 @@
 LookRoot $LJHOME/cgi-bin/bml/scheme
 DefaultLanguage en
-DefaultScheme blueshift
+DefaultScheme gradation-horizontal
 IncludePath inc/
 
 AllowOldSyntax 0

@@ -343,14 +343,20 @@ UPDATE supportcat SET allow_screened='1',basepoints='1',catname='General/Unknown
 
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('ao3', 'ao3', 'ao3.png', 'profile.service.ao3', '//archiveofourown.org/users/%s', 40);
 UPDATE profile_services SET userprop='ao3', imgfile='ao3.png', title_ml='profile.service.ao3', url_format='//archiveofourown.org/users/%s', maxlen=40 WHERE name='ao3';
+INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('bluesky', 'bluesky', 'bluesky.png', 'profile.service.bluesky', NULL, 40);   
+UPDATE profile_services SET userprop='bluesky', imgfile='bluesky.png', title_ml='profile.service.bluesky', url_format=NULL, maxlen=40 WHERE name='bluesky';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('deviantart', 'deviantart', 'deviantart.png', 'profile.service.deviantart', '//%s.deviantart.com', 20);
 UPDATE profile_services SET userprop='deviantart', imgfile='deviantart.png', title_ml='profile.service.deviantart', url_format='//%s.deviantart.com', maxlen=20 WHERE name='deviantart';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('diigo', 'diigo', 'diigo.png', 'profile.service.diigo', '//www.diigo.com/user/%s', 16);
 UPDATE profile_services SET userprop='diigo', imgfile='diigo.png', title_ml='profile.service.diigo', url_format='//www.diigo.com/user/%s', maxlen=16 WHERE name='diigo';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('discord', 'discord', 'discord.png', 'profile.service.discord', NULL, 40);
 UPDATE profile_services SET userprop='discord', imgfile='discord.png', title_ml='profile.service.discord', url_format=NULL, maxlen=40 WHERE name='discord';
+INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('dreamwidth', 'dreamwidth', 'dreamwidth.png', 'profile.service.dreamwidth', '//%s.dreamwidth.org', 30);
+UPDATE profile_services SET userprop='dreamwidth', imgfile='dreamwidth.png', title_ml='profile.service.dreamwidth', url_format='//%s.dreamwidth.org', maxlen=30 WHERE name='dreamwidth';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('etsy', 'etsy', 'etsy.png', 'profile.service.etsy', '//www.etsy.com/people/%s', 20);
 UPDATE profile_services SET userprop='etsy', imgfile='etsy.png', title_ml='profile.service.etsy', url_format='//www.etsy.com/people/%s', maxlen=20 WHERE name='etsy';
+INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('fediverse', 'fediverse', 'fediverse.png', 'profile.service.fediverse', NULL, 40);
+UPDATE profile_services SET userprop='fediverse', imgfile='fediverse.png', title_ml='profile.service.fediverse', url_format=NULL, maxlen=40 WHERE name='fediverse';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('ffnet', 'ffnet', 'ffnet.png', 'profile.service.ffnet', '//www.fanfiction.net/~%s', 30);
 UPDATE profile_services SET userprop='ffnet', imgfile='ffnet.png', title_ml='profile.service.ffnet', url_format='//www.fanfiction.net/~%s', maxlen=30 WHERE name='ffnet';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('github', 'github', 'github.png', 'profile.service.github', '//github.com/%s', 39);
@@ -387,6 +393,8 @@ INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_form
 UPDATE profile_services SET userprop='reddit', imgfile='reddit.png', title_ml='profile.service.reddit', url_format='//www.reddit.com/user/%s', maxlen=20 WHERE name='reddit';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('skype', 'skype', 'skype.gif', 'profile.service.skype', NULL, 40);
 UPDATE profile_services SET userprop='skype', imgfile='skype.gif', title_ml='profile.service.skype', url_format=NULL, maxlen=40 WHERE name='skype';
+INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('superlove', 'superlove', 'superlove.png', 'profile.service.superlove', '//superlove.sayitditto.net/users/%s', 40);
+UPDATE profile_services SET userprop='superlove', imgfile='superlove.png', title_ml='profile.service.superlove', url_format='//superlove.sayitditto.net/users/%s', maxlen=40 WHERE name='superlove';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('tumblr', 'tumblr', 'tumblr.png', 'profile.service.tumblr', '//%s.tumblr.com', 255);
 UPDATE profile_services SET userprop='tumblr', imgfile='tumblr.png', title_ml='profile.service.tumblr', url_format='//%s.tumblr.com', maxlen=255 WHERE name='tumblr';
 INSERT IGNORE INTO profile_services (name, userprop, imgfile, title_ml, url_format, maxlen) VALUES ('twitter', 'twitter', 'twitter_bird.png', 'profile.service.twitter', '//www.twitter.com/%s', 40);

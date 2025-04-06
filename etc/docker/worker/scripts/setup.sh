@@ -4,3 +4,4 @@
 # script manually.
 #
 
+#cp /home/dw/dw/etc/docker/web/files/config-private.pl /etc/config-private.pl
