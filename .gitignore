@@ -6,6 +6,7 @@
 /ext/ruby
 /ext/yuicompressor
 /etc/config*.pl
+/etc/*
 /build
 /locks
 /var
@@ -14,6 +15,18 @@ src/proxy/proxy
 .vscode
 .vstags
 .perl-cpm
+
+# kat ignores just to be safe tbh
+docker-entrypoint-initdb.d/*
+blobimages/
+_build/
+Build
+htdocs/img/profile_icons/*.png
+htdocs/manage/profile/index.bml.old
+htdocs/manage/profile/index.bml.text.old
+htdocs/scss/pages/manage/profile.scss
+views/manage/profile.tt
+views/manage/profile.tt.text
 
 # Ignore node_modules, wherever they occur
 /**/node_modules/

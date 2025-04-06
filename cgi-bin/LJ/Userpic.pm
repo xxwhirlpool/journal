@@ -367,7 +367,7 @@ sub dimensions {
 
 sub max_allowed_bytes {
     my ( $class, $u ) = @_;
-    return 61440;
+    return 205000;
 }
 
 # Returns the direct link to the uploaded userpic

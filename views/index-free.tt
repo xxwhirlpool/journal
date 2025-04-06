@@ -16,7 +16,7 @@
 [%- sections.title = site.name -%]
 
 [%- sections.head = BLOCK %]
-    <meta name="description" content="[% site.name %]: INSERT YOUR SITE DESCRIPTION HERE.">
+    <meta name="description" content="[% site.name %]: yeah">
     <meta name="keywords" content="diary,journal">
     <meta name="rating" content="General">
     <meta name="ROBOTS" content="All">
@@ -27,7 +27,7 @@
 
 <h2>What is [% site.name %]?</h2>
 
-<p>Words, words. You'll want to customize this page.</p>
+<p>it's stupid that's what it is</p>
 
 <h2>Getting Started</h2>
 

@@ -2299,13 +2299,19 @@ post.security.public=The entry is visible to everyone (public).
 
 profile.service.ao3=Archive of Our Own
 
+profile.service.bluesky=Bluesky
+
 profile.service.deviantart=DeviantArt
 
 profile.service.diigo=Diigo
 
 profile.service.discord=Discord
 
+profile.service.dreamwidth=Dreamwidth
+
 profile.service.etsy=Etsy
+
+profile.service.fediverse=Fediverse
 
 profile.service.ffnet=FanFiction.net
 
@@ -2348,6 +2354,8 @@ profile.service.spotify=Spotify
 profile.service.squidgeworld=Squidgeworld
 
 profile.service.steam=Steam
+
+profile.service.superlove=superlove
 
 profile.service.tumblr=Tumblr
 

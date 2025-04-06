@@ -31,15 +31,17 @@ sub get {
 
     return $_queue if defined $_queue;
 
+#    $_queue = DW::TaskQueue::LocalDisk->init();
+
     # Determine what kind of queue object to build, depending on if we're
     # running locally or not
-    if ( exists $LJ::SQS{region} ) {
-        return $_queue = DW::TaskQueue::SQS->init(%LJ::SQS);
-    }
+#    if ( exists $LJ::SQS{region} ) {
+ #       return $_queue = DW::TaskQueue::SQS->init(%LJ::SQS);
+  #  }
 
     # If we're a dev server, allow the local mode (not allowed in production,
     # it's really crappy)
-    if ($LJ::IS_DEV_SERVER) {
+    if ($LJ::IS_DEV_SERVER == 0) {
         return $_queue = DW::TaskQueue::LocalDisk->init();
     }
 

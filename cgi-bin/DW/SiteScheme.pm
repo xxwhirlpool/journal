@@ -26,8 +26,8 @@ package DW::SiteScheme;
 use strict;
 
 my %sitescheme_data = (
-    blueshift              => { parent => 'common', title    => "Blueshift" },
-    celerity               => { parent => 'common', title    => "Celerity" },
+ #   blueshift              => { parent => 'common', title    => "Blueshift" },
+#    celerity               => { parent => 'common', title    => "Celerity" },
     common                 => { parent => 'global', internal => 1 },
     'gradation-horizontal' => { parent => 'common', title    => "Gradation Horizontal" },
     'gradation-vertical'   => { parent => 'common', title    => "Gradation Vertical" },
