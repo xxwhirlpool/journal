@@ -25,6 +25,8 @@ RUN git -C $LJHOME fetch && \
     cat $LJHOME/doc/dependencies-cpanm | xargs cpanm -n -L /dw/extlib/ && \
     rm -rf /var/lib/apt/lists/*
 
+COPY . $LJHOME
+
 RUN $LJHOME/bin/build-static.sh
 
 # Copy in support scripts/configurations that are useful.

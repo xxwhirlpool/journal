@@ -27,6 +27,12 @@ htdocs/manage/profile/index.bml.text.old
 htdocs/scss/pages/manage/profile.scss
 views/manage/profile.tt
 views/manage/profile.tt.text
+blib/*
+t/MYMETA.json
+t/MYMETA.yml
+t/Makefile
+t/blib/
+t/pm_to_blib
 
 # Ignore node_modules, wherever they occur
 /**/node_modules/
