@@ -50,8 +50,7 @@ paths:
           description: Bad or missing request parameters.
           content:
             application/json:
-              schema:
-                &a1
+              schema: &a1
                 type: object
                 properties:
                   error:

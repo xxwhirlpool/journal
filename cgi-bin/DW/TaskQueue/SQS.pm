@@ -23,6 +23,7 @@ my $log = Log::Log4perl->get_logger(__PACKAGE__);
 
 use MIME::Base64 qw/ encode_base64 decode_base64 /;
 use Paws;
+use Paws::Credential::Environment;
 use Storable qw/ nfreeze thaw /;
 use Time::HiRes qw/ time /;
 use UUID::Tiny qw/ :std /;
@@ -35,7 +36,7 @@ use constant MAX_BATCH_SIZE       => 10;
 sub init {
     my ( $class, %args ) = @_;
 
-    foreach my $required (qw/ region prefix /) {
+    foreach my $required (qw/ region endpoint prefix /) {
         $log->logcroak( 'SQS configuration must include config: ', $required )
             unless exists $args{$required};
     }
@@ -46,6 +47,8 @@ sub init {
     my $paws = Paws->new(
         config => {
             region => $args{region},
+            endpoint => $args{endpoint},
+            credentials => Paws::Credential::Environment->new,
         },
     ) or $log->logcroak('Failed to initialize Paws object.');
     my $sqs = $paws->service('SQS')

@@ -30,14 +30,14 @@ LJ::Hooks::register_hook(
                 { parent => 'gradation-horizontal', title => "Gradation Horizontal" },
             'gradation-vertical-local' =>
                 { parent => 'gradation-vertical', title => "Gradation Vertical" },
-            'tropo-common' => { parent => 'common',       internal => 1 },
-#            'tropo-purple' => { parent => 'tropo-common', title    => "Tropospherical Purple" },
-#            'tropo-red'    => { parent => 'tropo-common', title    => "Tropospherical Red" },
+            # 'tropo-common' => { parent => 'common',       internal => 1 },
+            # 'tropo-purple' => { parent => 'tropo-common', title    => "Tropospherical Purple" },
+            # 'tropo-red'    => { parent => 'tropo-common', title    => "Tropospherical Red" },
         );
 
         @{$schemes} = (
-#            { scheme => "tropo-red" },
-#            { scheme => "tropo-purple" },
+            # { scheme => "tropo-red" },
+            # { scheme => "tropo-purple" },
             {
                 scheme => "celerity-local",
                 alt    => 'siteskins.celerity.alt',

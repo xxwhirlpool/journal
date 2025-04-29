@@ -18,8 +18,7 @@ paths:
           description: A list of accounts.
         "403":
           description: Not allowed to view crosspost accounts for that user.
-          schema:
-            &a1
+          schema: &a1
             type: object
             properties:
               error:

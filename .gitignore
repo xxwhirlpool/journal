@@ -22,6 +22,7 @@ blobimages/
 _build/
 Build
 htdocs/img/profile_icons/*.png
+htdocs/img/external/*
 htdocs/manage/profile/index.bml.old
 htdocs/manage/profile/index.bml.text.old
 htdocs/scss/pages/manage/profile.scss
@@ -33,6 +34,20 @@ t/MYMETA.yml
 t/Makefile
 t/blib/
 t/pm_to_blib
+/minio/*
+minio
+cgi-bin/LJ/Keywords.pm.orig
+cgi-bin/DW/Controller/UserAll.pm
+cgi-bin/DW/Controller/API/REST/Users.pm
+api/dist/users_all.yaml
+api/src/users_all.yaml
+views/stats/allusers.tt
+ext/dw-nonfree/htdocs/favicon.ico
+api/dist/icons.yaml
+api/dist/journals/accesslists.yaml
+api/dist/journals/accesslists_all.yaml
+api/dist/journals/tags.yaml
+api/dist/journals/xpostaccounts.yaml
 
 # Ignore node_modules, wherever they occur
 /**/node_modules/

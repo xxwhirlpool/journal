@@ -247,8 +247,10 @@ sub new {
         unlink $tmpfile or die "unlink: $tmpfile: $!";
     }
 
-    my $fh = new IO::File $tmpfile, O_WRONLY | O_CREAT | O_EXCL
+    my $fh = new IO::File $tmpfile, O_RDWR | O_CREAT | O_EXCL, 0777
         or die "open: $tmpfile: $!";
+    print "hit fhpls!";
+    warn "hit fhpls!";
     $fh->close;
     undef $fh;
 

@@ -45,7 +45,10 @@ sub profile_handler {
     my $remote = $rv->{remote};
     my $POST   = $r->post_args;
     my $scope  = '/manage/profile.tt';
-
+    
+    print "hit lol!";
+    warn "hit lol!";
+    
     # create $iscomm to help with community-specific translation strings
     my $iscomm = $u->is_community ? '.comm' : '';
     my $curr_privacy =
@@ -213,7 +216,8 @@ sub profile_handler {
     }
 
     if ( $r->did_post ) {
-
+        print "hit slay!";
+        warn "hit slay!";
         # name
         unless ( LJ::trim( $POST->{'name'} ) || defined( $POST->{'name_absent'} ) ) {
             $errors->add( 'name', '.error.noname' );
@@ -412,7 +416,9 @@ sub profile_handler {
         # update interests
         unless ( $POST->{'interests_absent'} ) {
             my $maxinterests = $u->count_max_interests;
-
+            print "hit bruhmoment!";
+            warn "hit bruhmoment!";
+            warn $POST->{'interests'};
             my @ints      = LJ::interest_string_to_list( $POST->{'interests'} );
             my $intcount  = scalar(@ints);
             my @interrors = ();
@@ -436,8 +442,11 @@ sub profile_handler {
                 }
                 else {
                     my $updated_interests_str = join( ", ", @valid_ints );
+                 #   warn $updated_interests_str;
                     $u->set_interests( \@valid_ints );
                     $vars->{interests} = $updated_interests_str;
+                    print "hit pokingatcode!";
+                    warn "hit pokingatcode!";
                 }
             }
         }
@@ -445,7 +454,8 @@ sub profile_handler {
         LJ::Hooks::run_hooks( 'profile_save', $u, \%saved, $POST );
         LJ::Hooks::run_hooks( 'spam_check',   $u, $POST,   'userbio' );
         LJ::Hooks::run_hook( 'set_profile_settings_extra', $u, $POST );
-
+        print "hit dosomething!";
+        warn "hit dosomething!";
         # tell the user all is well
         my $base        = $u->journal_base;
         my $profile_url = $u->profile_url;

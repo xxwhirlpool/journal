@@ -23,13 +23,22 @@ my $log = Log::Log4perl->get_logger(__PACKAGE__);
 
 use Digest::MD5 qw/ md5_hex /;
 use Paws;
+use Paws::Credential::Environment;
+use Env;
 
 sub type { 's3' }
+
+my $region = $ENV{'AWS_DEFAULT_REGION'};
+my $endpoint = $ENV{'AWS_ENDPOINT_URL'};
+my $bucket = $ENV{'AWS_BUCKET'};
+
+my $creds = Paws::Credential::Environment->new;
+my $auth = Paws->service('S3', bucket => $bucket, credentials => $creds, endpoint => $endpoint, region => $region);
 
 sub init {
     my ( $class, %args ) = @_;
 
-    foreach my $required (qw/ access_key secret_key region prefix bucket /) {
+    foreach my $required (qw/ access_key secret_key region endpoint prefix bucket /) {
         $log->logcroak( 'S3 configuration must include config: ', $required )
             unless exists $args{$required};
     }
@@ -40,22 +49,33 @@ sub init {
     my $paws = Paws->new(
         config => {
             region => $args{region},
+            endpoint => $args{endpoint},
+            bucket => $args{bucket},
         },
     ) or $log->logcroak('Failed to initialize Paws object.');
-    my $s3 = $paws->service('S3')
+    
+    my $creds = Paws::Credential::Environment->new;
+    
+    my $region = $ENV{'AWS_DEFAULT_REGION'};
+    my $endpoint = $ENV{'AWS_ENDPOINT_URL'};
+    my $bucket = $ENV{'AWS_BUCKET'};
+    
+    my $auth = Paws->service('S3', bucket => $bucket, credentials => $creds, endpoint => $endpoint, region => $region)
         or $log->logcroak('Failed to initialize Paws::S3 object.');
 
     $log->debug("Initializing blobstore for S3");
     my $self = {
-        s3     => $s3,
+        s3     => $auth,
         bucket => $args{bucket},
-        prefix => $args{prefix}
+        prefix => $args{prefix},
     };
     return bless $self, $class;
 }
 
 sub get_location_for_key {
     my ( $self, $namespace, $key ) = @_;
+    # my $creds = Paws::Credential::Explicit->new( access_key => "RXCsajgYYTNHT2C4kCjG", secret_key => "ekiHbULDIvXo95AnjbiZqfRH5CZLtZMj77cclYgx" );
+    # my $s3 = Paws->service('S3', bucket => "love4eva", credentials => $creds, endpoint => "http://minio:9000", region => "us-east-1");
 
     # Hash the key, we create two layers of directory structure so the files
     # spread across 256^2 directories
@@ -74,12 +94,14 @@ sub get_location_for_key {
 
 sub store {
     my ( $self, $namespace, $key, $blobref ) = @_;
+    # my $creds = Paws::Credential::Explicit->new( access_key => "RXCsajgYYTNHT2C4kCjG", secret_key => "ekiHbULDIvXo95AnjbiZqfRH5CZLtZMj77cclYgx" );
+    # my $s3 = Paws->service('S3', bucket => "love4eva", credentials => $creds, endpoint => "http://minio:9000", region => "us-east-1");
     $log->logcroak('Unable to store empty file.')
         unless defined $$blobref && length $$blobref;
     my $fqfn = $self->get_location_for_key( $namespace, $key );
 
     my $res = eval {
-        $self->{s3}->PutObject(
+        $auth->PutObject(
             Bucket => $self->{bucket},
             Key    => $fqfn,
             Body   => $$blobref,
@@ -98,7 +120,7 @@ sub exists {
     my ( $self, $namespace, $key ) = @_;
     my $fqfn = $self->get_location_for_key( $namespace, $key );
 
-    my $res = eval { $self->{s3}->HeadObject( Bucket => $self->{bucket}, Key => $fqfn, ) };
+    my $res = eval { $auth->HeadObject( Bucket => $self->{bucket}, Key => $fqfn, ) };
     if ( $@ && $@->isa('Paws::Exception') ) {
         $log->error( "Failed to check exists on ( $namespace, $key ): ", $@->message );
         return 0;
@@ -112,7 +134,7 @@ sub retrieve {
     my ( $self, $namespace, $key ) = @_;
     my $fqfn = $self->get_location_for_key( $namespace, $key );
 
-    my $res = eval { $self->{s3}->GetObject( Bucket => $self->{bucket}, Key => $fqfn, ) };
+    my $res = eval { $auth->GetObject( Bucket => $self->{bucket}, Key => $fqfn, ) };
     if ( $@ && $@->isa('Paws::Exception') ) {
         $log->error( "Failed to retrieve from ( $namespace, $key ): " . $@->message );
         return undef;
@@ -124,7 +146,7 @@ sub delete {
     my ( $self, $namespace, $key ) = @_;
     my $fqfn = $self->get_location_for_key( $namespace, $key );
 
-    my $res = eval { $self->{s3}->DeleteObject( Bucket => $self->{bucket}, Key => $fqfn, ) };
+    my $res = eval { $auth->DeleteObject( Bucket => $self->{bucket}, Key => $fqfn, ) };
     if ( $@ && $@->isa('Paws::Exception') ) {
         $log->error( "Failed to delete ( $namespace, $key ): ", $@->message );
         return 0;

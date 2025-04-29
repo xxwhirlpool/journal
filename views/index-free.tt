@@ -16,7 +16,7 @@
 [%- sections.title = site.name -%]
 
 [%- sections.head = BLOCK %]
-    <meta name="description" content="[% site.name %]: yeah">
+    <meta name="description" content="[% site.name %]: stupid">
     <meta name="keywords" content="diary,journal">
     <meta name="rating" content="General">
     <meta name="ROBOTS" content="All">
@@ -25,59 +25,60 @@
 
 [%- CALL dw.active_resource_group( "foundation" ) -%]
 
-<h2>What is [% site.name %]?</h2>
+[%- IF remote -%]
 
-<p>it's stupid that's what it is</p>
+[%- dw.need_res( { group => "foundation" }
+        "js/quickupdate.js"
+) -%]
 
-<h2>Getting Started</h2>
+<div class="large-10">
+[% panel.render_primary %]
+</div>
+
+<h2>User Options</h2>
 
 <table summary="" width="100%" cellpadding="2" cellspacing="5">
 <tr>
 <td valign='top' width="50%">
 <dl>
-<dt><a href="/create/"><font size="+1"><tt><b>Create A Journal</b></tt></font></a>
-<dd>Come and create your very own [% site.nameshort %]!
-<dt><a href="/update"><font size="+1"><tt><b>Update Journal</b></tt></font></a>
-<dd>Update your [% site.nameshort %] from the web.
+<dt><a href="/update"><tt>Update Journal</tt></a>
+<dd>Update your journal from the web.
 </dl>
 </td>
 <td valign='top' width="50%">
 <dl>
-<dt><a href="/customize/"><font size="+1"><tt><b>Select Style</b></tt></font></a>
-<dd>Customize your [% site.nameshort %]'s appearance and options.
+<dt><a href="/customize/"><tt>Select Style</tt></a>
+<dd>Customize your journal's appearance and options.
 </dl>
 </td>
 </tr>
 </table>
 
-<h2>Other Options</h2>
-
 <table summary="" width="100%" cellpadding="2" cellspacing="5">
-<tr>
 <td valign='top' width="50%">
 <dl>
-<dl><dt><a href="/manage/profile/"><font size="+1"><tt><b>Edit Profile</b></tt></font></a>
+<dt><a href="/manage/profile/"><tt>Edit Profile</tt></a>
 <dd>Edit your personal information and preferences.
-<dt><a href="/editjournal"><font size="+1"><tt><b>Edit Journal Entries</b></tt></font></a>
+<dt><a href="/editjournal"><tt>Edit Journal Entries</tt></a>
 <dd>Edit or delete journal entries you've made in the past.
 </dl>
 </td>
 <td valign='top' width="50%">
-<dl><dt><a href="/manage/circle/edit"><font size="+1"><tt><b>Edit Circle</b></tt></font></a>
+<dl><dt><a href="/manage/circle/edit"><tt>Edit Circle</tt></a>
 <dd>Edit your list of people to track from your [% site.nameshort %] reading page.
 </dl>
 </td>
 </tr>
 </table>
 
-<h2>Tech Support &amp; Documentation</h2>
+<h3>Tech Support</h3>
 
 <table summary="" width="100%" cellpadding="2" cellspacing="5">
 <tr>
 <td valign='top' width="50%">
 <dl>
-<dt><a href="/support/"><font size="+1"><tt><b>Support</b></tt></font></a>
-<dd>Mail the support team and get a quick answer to your question.
+<dt><a href="mailto:witnesslachesis@disroot.org"><tt>Support</tt></a>
+<dd>Mail the admin and get a (somewhat) quick answer to your question.
 </dl>
 </td>
 <td valign='top' width="50%">
@@ -86,3 +87,36 @@
 </td>
 </tr>
 </table>
+
+[%- ELSE -%]
+
+<h2>What is [% site.name %]?</h2>
+
+<p>it's stupid that's what it is</p>
+
+<h3>Join [% site.name %]</h3>
+
+<p>With an invite code, you can join [% site.name %]!</a></p>
+
+<div class="button-bar entry-quick-actions">
+<a href="[% site.root %]/create" class="button radius">Create an Account</a>
+</div>
+
+<h3>Contact</h3>
+
+<table summary="" width="100%" cellpadding="2" cellspacing="5">
+<tr>
+<td valign='top' width="50%">
+<dl>
+<dt><a href="mailto:witnesslachesis@disroot.org"><tt>Support</tt></a>
+<dd>Mail the admin and get a (somewhat) quick answer to your question.
+</dl>
+</td>
+<td valign='top' width="50%">
+<dl>
+</dl>
+</td>
+</tr>
+</table>
+
+[%- END -%]

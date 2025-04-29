@@ -18,8 +18,7 @@ paths:
           description: A list of accesslists.
         "403":
           description: You cannot view accesslists on that journal.
-          schema:
-            &a1
+          schema: &a1
             type: object
             properties:
               error:
@@ -28,8 +27,7 @@ paths:
                 example: "Bad format for username. Errors: String is too long: 77/25."
               success:
                 type: number
-        "404":
-          &a2
+        "404": &a2
           description: Username specified does not exist.
           content:
             application/json:
@@ -56,8 +54,7 @@ paths:
       responses:
         "200":
           description: The id of the newly created accesslist.
-        "400":
-          &a3
+        "400": &a3
           description: Bad or missing request parameters.
           content:
             application/json:
